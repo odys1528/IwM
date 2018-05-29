@@ -31,11 +31,6 @@ namespace IwM
             
         }
 
-        private void nameTextBox_Validated(object sender, EventArgs e)
-        {
-            //Do not remove this method!
-        }
-
         private void namesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             nextButton.Enabled = true;
@@ -56,6 +51,16 @@ namespace IwM
 
                 namesComboBox.SelectedIndex = 0;
             }
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            fromDateTimePicker.Enabled = true;
+            toDateTimePicker.Enabled = true;
+            filterButton.Enabled = true;
+            addButton.Enabled = true;
+            chartButton.Enabled = true;
+            anotherButton.Enabled = true;
         }
     }
 }
