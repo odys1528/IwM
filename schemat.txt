@@ -1,0 +1,14 @@
+
+na podstawie pacjenta pobrać jego pomiary
+na podstawie pacjenta pobrać jego przyjmowanie leków
+
+filtrowanie lokalnych po dacie
+posortować po dacie
+
+po kliknięciu pokaż szczegóły leku
+
+
+pytania:
+	czy serio tworzyć listę wszytskich pacjentów? Długo trwa
+	
+	
