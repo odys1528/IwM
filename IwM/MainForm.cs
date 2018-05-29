@@ -33,7 +33,17 @@ namespace IwM
 
         private void nameTextBox_Validated(object sender, EventArgs e)
         {
-            if(nameTextBox.Text != "")
+            //Do not remove this method!
+        }
+
+        private void namesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nextButton.Enabled = true;
+        }
+
+        private void validateNameButton_Click(object sender, EventArgs e)
+        {
+            if (nameTextBox.Text != "")
             {
                 namesComboBox.Text = "";
                 List<Patient> patients = db.patientsByName(nameTextBox.Text);
@@ -41,14 +51,11 @@ namespace IwM
 
                 foreach (var l in patients)
                 {
-                    namesComboBox.Items.Add(l.Id+" " + l.Name[0].Family);
+                    namesComboBox.Items.Add(l.Id + " " + l.Name[0].GivenElement[0] + " " + l.Name[0].Family);
                 }
-            }
-        }
 
-        private void namesComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            nextButton.Enabled = true;
+                namesComboBox.SelectedIndex = 0;
+            }
         }
     }
 }
