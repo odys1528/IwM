@@ -46,7 +46,7 @@ namespace IwM
 
                 foreach (var l in patients)
                 {
-                    namesComboBox.Items.Add(l.Id + " " + l.Name[0].GivenElement[0] + " " + l.Name[0].Family);
+                    namesComboBox.Items.Add(l.Id + " " + l.Name[0].Given.FirstOrDefault() + " " + l.Name.First().Family);
                 }
 
                 namesComboBox.SelectedIndex = 0;
