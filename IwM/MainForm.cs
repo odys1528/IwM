@@ -30,7 +30,37 @@ namespace IwM
         {
             
         }
+        private void getPatientById(string id)
+        {
+            Patient p = null;
+            List<Observation> observations = new List<Observation>();
+            List<Medication> medications = new List<Medication>();
+            List<MedicationStatement> medicationStatements = new List<MedicationStatement>();
 
+            Hl7.Fhir.Model.Bundle ReturnedBundle = db.everythingById(id);
+            foreach (var Entry in ReturnedBundle.Entry)
+            {
+                if (Entry.Resource is Patient)
+                {
+                    Console.WriteLine("yay");
+                    p = (Patient)Entry.Resource;
+                }
+                if (Entry.Resource is Observation)
+                    observations.Add((Observation)Entry.Resource);
+                if (Entry.Resource is Medication)
+                    medications.Add((Medication)Entry.Resource);
+                if (Entry.Resource is MedicationStatement)
+                    medicationStatements.Add((MedicationStatement)Entry.Resource);
+
+                Console.WriteLine(string.Format("{0}/{1}", Entry.Resource.TypeName, Entry.Resource.Id));
+            }
+            Console.WriteLine(string.Format("{0} {1}", p.Name.First().Given.FirstOrDefault(), p.Name.First().Family));
+            Period a = medicationStatements[0].Effective as Period;
+            Console.WriteLine(string.Format("{0}", a.Start));
+
+
+
+        }
         private void namesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             nextButton.Enabled = true;
