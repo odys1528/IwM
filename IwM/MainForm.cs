@@ -18,7 +18,10 @@ namespace IwM
 {
     public partial class MainForm : Form
     {
-        FhirOperations db;
+        private FhirOperations db;
+        private List<Patient> patients;
+        private Patient patient;
+        private Bundle data; //TODO przypisać historię pacjenta
 
         public MainForm()
         {
@@ -64,6 +67,7 @@ namespace IwM
         private void namesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             nextButton.Enabled = true;
+            patient = patients[namesComboBox.SelectedIndex];
         }
 
         private void validateNameButton_Click(object sender, EventArgs e)
@@ -71,7 +75,7 @@ namespace IwM
             if (nameTextBox.Text != "")
             {
                 namesComboBox.Text = "";
-                List<Patient> patients = db.patientsByName(nameTextBox.Text);
+                patients = db.patientsByName(nameTextBox.Text);
                 namesComboBox.Items.Clear();
 
                 foreach (var l in patients)
@@ -85,12 +89,8 @@ namespace IwM
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            fromDateTimePicker.Enabled = true;
-            toDateTimePicker.Enabled = true;
-            filterButton.Enabled = true;
-            addButton.Enabled = true;
-            chartButton.Enabled = true;
-            anotherButton.Enabled = true;
+            HistoryForm form = new HistoryForm(patient, data);
+            form.ShowDialog();
         }
     }
 }
