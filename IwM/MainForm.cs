@@ -31,9 +31,9 @@ namespace IwM
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            //TODO załadować pierwsze 20 wyników
         }
-        private void getPatientById(string id)
+        private void getPatientById(string id) //TODO zaimplementować to w HistoryForm
         {
             Patient p = null;
             List<Observation> observations = new List<Observation>();
@@ -64,26 +64,19 @@ namespace IwM
 
 
         }
-        private void namesComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            nextButton.Enabled = true;
-            patient = patients[namesComboBox.SelectedIndex];
-        }
 
         private void validateNameButton_Click(object sender, EventArgs e)
         {
             if (nameTextBox.Text != "")
             {
-                namesComboBox.Text = "";
+                patientListBox.Items.Clear();
                 patients = db.patientsByName(nameTextBox.Text);
-                namesComboBox.Items.Clear();
-
                 foreach (var l in patients)
                 {
-                    namesComboBox.Items.Add(l.Id + " " + l.Name[0].Given.FirstOrDefault() + " " + l.Name.First().Family);
+                    patientListBox.Items.Add(l.Id + " " + l.Name[0].Given.FirstOrDefault() + " " + l.Name.First().Family);
                 }
-
-                namesComboBox.SelectedIndex = 0;
+                //Console.WriteLine(patients.Count);
+                patientListBox.SelectedIndex = 0;
             }
         }
 
@@ -91,6 +84,28 @@ namespace IwM
         {
             HistoryForm form = new HistoryForm(patient, data);
             form.ShowDialog();
+        }
+
+        private void patientListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nextButton.Enabled = true;
+            editPatientButton.Enabled = true;
+            patient = patients[patientListBox.SelectedIndex];
+        }
+
+        private void editPatientButton_Click(object sender, EventArgs e)
+        {
+            //TODO nowy formularz z edycją danych pacjenta
+        }
+
+        private void backPageButton_Click(object sender, EventArgs e)
+        {
+            //TODO załadować wcześniejsze wyniki (20)
+        }
+
+        private void nextPageButton_Click(object sender, EventArgs e)
+        {
+            //TODO załadować późniejsze wyniki (20)
         }
     }
 }
