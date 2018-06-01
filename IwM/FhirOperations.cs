@@ -34,16 +34,31 @@ namespace IwM
 
             return patients;
         }
-        public List<Patient> get20Patients(int bottom_limit) {
+        public List<Patient> get20Patients(int bottom_limit, int top_limit) {
             List<Patient> patients = new List<Patient>();
             Patient patient = new Patient();
             patient.Id = (bottom_limit+1).ToString();
-            int id = bottom_limit+1;
-            for (int i = bottom_limit+1; i < bottom_limit + 21; i++ ) {
-                patient = patientById(id);
-                patients.Add(patient);
-                id = Int32.Parse(patient.Id)+1;
+            if (bottom_limit == -1)
+            {
+                int id = top_limit - 1;
+                Console.WriteLine(id);
+                for (int i = top_limit -1; i > top_limit - 21; i--)
+                {
+                    patient = patientById(id,-1);
+                    patients.Add(patient);
+                    id = Int32.Parse(patient.Id) - 1;
                 }
+            }
+            else if (top_limit == -1) {
+                int id = bottom_limit + 1;
+                for (int i = bottom_limit + 1; i < bottom_limit + 21; i++)
+                {
+                    patient = patientById(id,1);
+                    patients.Add(patient);
+                    id = Int32.Parse(patient.Id) + 1;
+                }
+            }
+            
             return patients;
 
         }
@@ -83,7 +98,10 @@ namespace IwM
             }
             return ReturnedBundle;
         }
-        public Patient patientById(int id)
+
+        //id - od którego id zacząć szukać pacjenta (niektóre id zawierają puste elementy)
+        //direction - 1: zwiększaj id  -1: zmniejszaj id
+        public Patient patientById(int id, int direction)
         {
            
             String url = FhirClientEndPoint + "Patient/" + id;
@@ -97,20 +115,20 @@ namespace IwM
                 }
                 catch (Hl7.Fhir.Rest.FhirOperationException)
                 {
-                    id++;
+                    id = id + direction * 1;
                     url = FhirClientEndPoint + "Patient/" + id;
                 }
                 catch (System.Net.WebException) { }
-
+                //pomiń pacjentów, którzy nie mają imienia
                 try { String name = patient.Name.First().Family; }
                 catch (System.NullReferenceException)
                 {
-                    id++;
+                    id = id + direction * 1;
                     url = FhirClientEndPoint + "Patient/" + id;
                     gotPatient = false;
                 }
                 catch (System.InvalidOperationException) {
-                    id++;
+                    id = id + direction * 1;
                     url = FhirClientEndPoint + "Patient/" + id;
                     gotPatient = false;
                 }

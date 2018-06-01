@@ -23,6 +23,8 @@ namespace IwM
         private Patient patient;
         private Bundle data; //TODO przypisać historię pacjenta
         private String lastPatientID = "0"; //Mówi, jakie jest id ostatniego pacjenta na liście
+        private String firstPatientID = "0";
+        private String minimalPatientID = "0";
         
 
         public MainForm()
@@ -33,8 +35,10 @@ namespace IwM
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            patients = db.get20Patients(0);
+            patients = db.get20Patients(0,-1);
             lastPatientID = patients[19].Id;
+            firstPatientID = patients[0].Id;
+            minimalPatientID = patients[0].Id;
             
             foreach (var l in patients)
             {
@@ -109,12 +113,39 @@ namespace IwM
 
         private void backPageButton_Click(object sender, EventArgs e)
         {
-            //TODO załadować wcześniejsze wyniki (20)
+            patientListBox.Items.Clear();
+            List<Patient> messyPatients = new List<Patient>();
+            messyPatients = db.get20Patients(-1, Int32.Parse(firstPatientID));
+            patients.Clear();
+            for (int i = messyPatients.Count-1; i >= 0; i--) {
+                patients.Add(messyPatients[i]);
+            }
+            lastPatientID = patients[19].Id;
+            firstPatientID = patients[0].Id;
+            
+            foreach (var l in patients)
+            {
+                patientListBox.Items.Add(l.Id + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
+            }
+            patientListBox.SelectedIndex = 0;
+            if (firstPatientID == minimalPatientID) {
+                backPageButton.Enabled = false;
+            }
         }
 
         private void nextPageButton_Click(object sender, EventArgs e)
         {
-            //TODO załadować późniejsze wyniki (20)
+            patientListBox.Items.Clear();
+            patients = db.get20Patients(Int32.Parse(lastPatientID),-1);
+            lastPatientID = patients[19].Id;
+            firstPatientID = patients[0].Id;
+
+            foreach (var l in patients)
+            {
+                patientListBox.Items.Add(l.Id + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
+            }
+            patientListBox.SelectedIndex = 0;
+            backPageButton.Enabled = true;
         }
     }
 }
