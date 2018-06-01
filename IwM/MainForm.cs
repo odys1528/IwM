@@ -22,6 +22,8 @@ namespace IwM
         private List<Patient> patients;
         private Patient patient;
         private Bundle data; //TODO przypisać historię pacjenta
+        private String lastPatientID = "0"; //Mówi, jakie jest id ostatniego pacjenta na liście
+        
 
         public MainForm()
         {
@@ -31,7 +33,14 @@ namespace IwM
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //TODO załadować pierwsze 20 wyników
+            patients = db.get20Patients(0);
+            lastPatientID = patients[19].Id;
+            
+            foreach (var l in patients)
+            {
+                patientListBox.Items.Add(l.Id + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
+            }
+            patientListBox.SelectedIndex = 0;
         }
         private void getPatientById(string id) //TODO zaimplementować to w HistoryForm
         {

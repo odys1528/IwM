@@ -34,6 +34,19 @@ namespace IwM
 
             return patients;
         }
+        public List<Patient> get20Patients(int bottom_limit) {
+            List<Patient> patients = new List<Patient>();
+            Patient patient = new Patient();
+            patient.Id = (bottom_limit+1).ToString();
+            int id = bottom_limit+1;
+            for (int i = bottom_limit+1; i < bottom_limit + 21; i++ ) {
+                patient = patientById(id);
+                patients.Add(patient);
+                id = Int32.Parse(patient.Id)+1;
+                }
+            return patients;
+
+        }
         public Hl7.Fhir.Model.Bundle everythingById(string id)
         {
             Hl7.Fhir.Model.Bundle ReturnedBundle = null;
@@ -70,10 +83,38 @@ namespace IwM
             }
             return ReturnedBundle;
         }
-        public Patient patientById(string id)
+        public Patient patientById(int id)
         {
-            Patient patient;
-            patient = _client.Read<Patient>(id);
+           
+            String url = FhirClientEndPoint + "Patient/" + id;
+            Patient patient = null;
+            Boolean gotPatient = false;
+            while (!gotPatient) {
+                try
+                {
+                    patient = _client.Read<Patient>(url);
+                    gotPatient = true;
+                }
+                catch (Hl7.Fhir.Rest.FhirOperationException)
+                {
+                    id++;
+                    url = FhirClientEndPoint + "Patient/" + id;
+                }
+                catch (System.Net.WebException) { }
+
+                try { String name = patient.Name.First().Family; }
+                catch (System.NullReferenceException)
+                {
+                    id++;
+                    url = FhirClientEndPoint + "Patient/" + id;
+                    gotPatient = false;
+                }
+                catch (System.InvalidOperationException) {
+                    id++;
+                    url = FhirClientEndPoint + "Patient/" + id;
+                    gotPatient = false;
+                }
+            }
             return patient;
         }
     }
