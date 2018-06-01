@@ -108,7 +108,8 @@ namespace IwM
 
         private void editPatientButton_Click(object sender, EventArgs e)
         {
-            //TODO nowy formularz z edycją danych pacjenta
+            EditForm form = new EditForm(patient, data);
+            form.ShowDialog();
         }
 
         private void backPageButton_Click(object sender, EventArgs e)
