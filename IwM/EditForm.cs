@@ -14,9 +14,9 @@ namespace IwM
     public partial class EditForm : Form
     {
         private Patient patient;
-        private Bundle data;
+        private List<Observation> data;
 
-        public EditForm(Patient patient, Bundle bundle)
+        public EditForm(Patient patient, List<Observation> bundle)
         {
             InitializeComponent();
             this.patient = patient;
@@ -26,6 +26,19 @@ namespace IwM
         {
             string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
             titleLabel.Text = "Edycja danych pacjenta: " + patientName;
+
+            foreach (var obs in data)
+            {
+                var performer="";
+                try
+                {
+                    performer = obs.Performer.FirstOrDefault().Display;
+                }
+                catch (System.NullReferenceException) {}
+                var effective = obs.Effective;
+                var status = obs.Status;
+                var interpretation = obs.Interpretation;
+            }
         }
 
     }

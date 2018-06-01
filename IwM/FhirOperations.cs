@@ -135,5 +135,36 @@ namespace IwM
             }
             return patient;
         }
+
+        public List<Hl7.Fhir.Model.Observation> observationsByID(string id) {
+            List<Hl7.Fhir.Model.Observation> observations = new List<Observation>();
+
+            try
+            {
+                //Attempt to send the resource to the server endpoint                
+                UriBuilder UriBuilderx = new UriBuilder(FhirClientEndPoint);
+                UriBuilderx.Path = "Patient/" + id;
+                Hl7.Fhir.Model.Resource ReturnedResource = _client.InstanceOperation(UriBuilderx.Uri, "everything");
+
+                if (ReturnedResource is Hl7.Fhir.Model.Bundle)
+                {
+                    Hl7.Fhir.Model.Bundle ReturnedBundle = ReturnedResource as Hl7.Fhir.Model.Bundle;
+                    foreach (var Entry in ReturnedBundle.Entry) {
+                        if (Entry.Resource is Observation)
+                            observations.Add((Observation)Entry.Resource);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Operation call must return a bundle resource");
+                }
+
+            }
+            catch (Hl7.Fhir.Rest.FhirOperationException FhirOpExec)
+            {
+                Console.WriteLine("An error message: " + FhirOpExec.Message);
+            }
+            return observations;
+        }
     }
 }

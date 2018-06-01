@@ -58,7 +58,6 @@ namespace IwM
             {
                 if (Entry.Resource is Patient)
                 {
-                    Console.WriteLine("yay");
                     p = (Patient)Entry.Resource;
                 }
                 if (Entry.Resource is Observation)
@@ -108,6 +107,7 @@ namespace IwM
 
         private void editPatientButton_Click(object sender, EventArgs e)
         {
+            List<Hl7.Fhir.Model.Observation> data = db.observationsByID(patient.Id);
             EditForm form = new EditForm(patient, data);
             form.ShowDialog();
         }
