@@ -42,7 +42,7 @@ namespace IwM
             
             foreach (var l in patients)
             {
-                patientListBox.Items.Add(l.Id + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
+                patientListBox.Items.Add(l.Id.PadLeft(4,' ') + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
             }
             patientListBox.SelectedIndex = 0;
         }
@@ -86,7 +86,7 @@ namespace IwM
                 patients = db.patientsByName(nameTextBox.Text);
                 foreach (var l in patients)
                 {
-                    patientListBox.Items.Add(l.Id + " " + l.Name[0].Given.FirstOrDefault() + " " + l.Name.First().Family);
+                    patientListBox.Items.Add(l.Id.PadLeft(4, ' ') + " " + l.Name[0].Given.FirstOrDefault() + " " + l.Name.First().Family);
                 }
                 //Console.WriteLine(patients.Count);
                 patientListBox.SelectedIndex = 0;
@@ -125,7 +125,7 @@ namespace IwM
             
             foreach (var l in patients)
             {
-                patientListBox.Items.Add(l.Id + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
+                patientListBox.Items.Add(l.Id.PadLeft(4,' ') + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
             }
             patientListBox.SelectedIndex = 0;
             if (firstPatientID == minimalPatientID) {
@@ -142,7 +142,7 @@ namespace IwM
 
             foreach (var l in patients)
             {
-                patientListBox.Items.Add(l.Id + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
+                patientListBox.Items.Add(l.Id.PadLeft(4, ' ') + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
             }
             patientListBox.SelectedIndex = 0;
             backPageButton.Enabled = true;
