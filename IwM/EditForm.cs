@@ -39,6 +39,7 @@ namespace IwM
             DataTable _myDataTable = new DataTable();
 
             _myDataTable.Columns.Add("Id");
+            _myDataTable.Columns[0].ReadOnly = true;
             _myDataTable.Columns.Add("Effective");
             _myDataTable.Columns.Add("Status");
             _myDataTable.Columns.Add("Interpretation");
