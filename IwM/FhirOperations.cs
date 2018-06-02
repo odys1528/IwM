@@ -166,5 +166,10 @@ namespace IwM
             }
             return observations;
         }
+
+        public void updateEffective(FhirDateTime effective, Observation ob) {
+            ob.Effective = effective;
+            _client.Update<Observation>(ob);
+        }
     }
 }
