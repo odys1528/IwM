@@ -25,9 +25,6 @@ namespace IwM
             InitializeComponent();
             this.patient = patient;
             this.data = bundle;
-            observations = new List<Observation>();
-            medications = new List<Medication>();
-            medicationStatements = new List<MedicationStatement>();
             bs = new BindingSource();
         }
 
@@ -43,38 +40,20 @@ namespace IwM
             dataTypeComboBox.SelectedIndex = 0;
 
             getPatientData();
-            fillGridWithData();
+            fillGridWithData(0);
         }
 
         private void dataTypeButton_Click(object sender, EventArgs e)
         {
-            if(dataTypeComboBox.SelectedIndex >= 0)
-            {
-                if(dataTypeComboBox.SelectedText == "wszystkie")
-                {
-
-                }
-                else if (dataTypeComboBox.SelectedText == "Observation")
-                {
-
-                }
-                else if (dataTypeComboBox.SelectedText == "Medication")
-                {
-
-                }
-                else if (dataTypeComboBox.SelectedText == "Medication Statement")
-                {
-
-                }
-            }
+            fillGridWithData(dataTypeComboBox.SelectedIndex);
         }
 
         private void getPatientData()
         {
             Patient p = patient;
-            observations.Clear();
-            medications.Clear();
-            medicationStatements.Clear();
+            observations = new List<Observation>();
+            medications = new List<Medication>();
+            medicationStatements = new List<MedicationStatement>();
 
             Hl7.Fhir.Model.Bundle ReturnedBundle = data;
             foreach (var Entry in ReturnedBundle.Entry)
@@ -97,28 +76,32 @@ namespace IwM
             //Console.WriteLine(string.Format("{0}", a.Start));
         }
 
-        private void fillGridWithData()
+        private void fillGridWithData(int mode)
         {
-            foreach (var o in observations)
-            {
-                //bs.Add(o);
-                TableRecord tr = new TableRecord("Observation","2018-06-07","nana");
-                bs.Add(tr);
-            }
+            bs.Clear();
+            if (mode == 0 || mode == 1)
+                foreach (var o in observations)
+                {
+                    //bs.Add(o);
+                    TableRecord tr = new TableRecord("Observation","2018-06-07","nana");
+                    bs.Add(tr);
+                }
 
-            foreach(var m in medications)
-            {
-                //bs.Add(m);
-                TableRecord tr = new TableRecord("Medication", "2018-06-07", "nana");
-                bs.Add(tr);
-            }
+            if (mode == 0 || mode == 2)
+                foreach (var m in medications)
+                {
+                    //bs.Add(m);
+                    TableRecord tr = new TableRecord("Medication", "2018-06-07", "nana");
+                    bs.Add(tr);
+                }
 
-            foreach(var ms in medicationStatements)
-            {
-                //bs.Add(ms);
-                TableRecord tr = new TableRecord("Medication Statement", "2018-06-07", "nana");
-                bs.Add(tr);
-            }
+            if (mode == 0 || mode == 3)
+                foreach (var ms in medicationStatements)
+                {
+                    //bs.Add(ms);
+                    TableRecord tr = new TableRecord("Medication Statement", "2018-06-07", "nana");
+                    bs.Add(tr);
+                }
             historyDataGridView.DataSource = bs;
         }
 
