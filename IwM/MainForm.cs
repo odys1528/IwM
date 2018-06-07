@@ -94,6 +94,7 @@ namespace IwM
 
         private void nextButton_Click(object sender, EventArgs e)
         {
+            data = db.everythingById(patient.Id);
             HistoryForm form = new HistoryForm(patient, data);
             form.ShowDialog();
         }

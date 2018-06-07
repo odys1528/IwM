@@ -29,22 +29,26 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.addButton = new System.Windows.Forms.Button();
+            this.chartButton = new System.Windows.Forms.Button();
+            this.anotherButton = new System.Windows.Forms.Button();
+            this.historyDataGridView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.fromLabel = new System.Windows.Forms.Label();
             this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.toLabel = new System.Windows.Forms.Label();
             this.filterButton = new System.Windows.Forms.Button();
-            this.historyDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.addButton = new System.Windows.Forms.Button();
-            this.chartButton = new System.Windows.Forms.Button();
-            this.anotherButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataTypeButton = new System.Windows.Forms.Button();
+            this.dataTypeComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -55,16 +59,19 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 387F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.historyDataGridView, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.historyDataGridView, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.titleLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.125F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.875F));
+            this.tableLayoutPanel1.RowCount = 11;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.69504F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.30496F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
@@ -72,8 +79,69 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 522);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 3);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.50739F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.49261F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
+            this.tableLayoutPanel4.Controls.Add(this.addButton, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.chartButton, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.anotherButton, 2, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(103, 417);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(610, 71);
+            this.tableLayoutPanel4.TabIndex = 10;
+            // 
+            // addButton
+            // 
+            this.addButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addButton.Location = new System.Drawing.Point(62, 3);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(99, 65);
+            this.addButton.TabIndex = 0;
+            this.addButton.Text = "Dodaj nowe coś";
+            this.addButton.UseVisualStyleBackColor = true;
+            // 
+            // chartButton
+            // 
+            this.chartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chartButton.Location = new System.Drawing.Point(290, 3);
+            this.chartButton.Name = "chartButton";
+            this.chartButton.Size = new System.Drawing.Size(93, 65);
+            this.chartButton.TabIndex = 1;
+            this.chartButton.Text = "Wyświetl wykres";
+            this.chartButton.UseVisualStyleBackColor = true;
+            // 
+            // anotherButton
+            // 
+            this.anotherButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.anotherButton.Location = new System.Drawing.Point(487, 3);
+            this.anotherButton.Name = "anotherButton";
+            this.anotherButton.Size = new System.Drawing.Size(87, 65);
+            this.anotherButton.TabIndex = 2;
+            this.anotherButton.Text = "Jeszcze jeden guzik";
+            this.anotherButton.UseVisualStyleBackColor = true;
+            // 
+            // historyDataGridView
+            // 
+            this.historyDataGridView.AllowUserToAddRows = false;
+            this.historyDataGridView.AllowUserToDeleteRows = false;
+            this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel1.SetColumnSpan(this.historyDataGridView, 3);
+            this.historyDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.historyDataGridView.Location = new System.Drawing.Point(103, 266);
+            this.historyDataGridView.Name = "historyDataGridView";
+            this.historyDataGridView.RowTemplate.Height = 24;
+            this.historyDataGridView.Size = new System.Drawing.Size(610, 137);
+            this.historyDataGridView.TabIndex = 9;
             // 
             // tableLayoutPanel3
             // 
@@ -92,7 +160,7 @@
             this.tableLayoutPanel3.Controls.Add(this.toLabel, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.filterButton, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(103, 120);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(103, 192);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -147,94 +215,72 @@
             this.filterButton.Text = "Filtruj daty";
             this.filterButton.UseVisualStyleBackColor = true;
             // 
-            // historyDataGridView
-            // 
-            this.historyDataGridView.AllowUserToAddRows = false;
-            this.historyDataGridView.AllowUserToDeleteRows = false;
-            this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.historyDataGridView, 3);
-            this.historyDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.historyDataGridView.Location = new System.Drawing.Point(103, 194);
-            this.historyDataGridView.Name = "historyDataGridView";
-            this.historyDataGridView.RowTemplate.Height = 24;
-            this.historyDataGridView.Size = new System.Drawing.Size(610, 137);
-            this.historyDataGridView.TabIndex = 9;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 3);
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.50739F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.49261F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
-            this.tableLayoutPanel4.Controls.Add(this.addButton, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.chartButton, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.anotherButton, 2, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(103, 345);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(610, 71);
-            this.tableLayoutPanel4.TabIndex = 10;
-            // 
-            // addButton
-            // 
-            this.addButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addButton.Location = new System.Drawing.Point(62, 3);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(99, 65);
-            this.addButton.TabIndex = 0;
-            this.addButton.Text = "Dodaj nowe coś";
-            this.addButton.UseVisualStyleBackColor = true;
-            // 
-            // chartButton
-            // 
-            this.chartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chartButton.Location = new System.Drawing.Point(291, 3);
-            this.chartButton.Name = "chartButton";
-            this.chartButton.Size = new System.Drawing.Size(93, 65);
-            this.chartButton.TabIndex = 1;
-            this.chartButton.Text = "Wyświetl wykres";
-            this.chartButton.UseVisualStyleBackColor = true;
-            // 
-            // anotherButton
-            // 
-            this.anotherButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.anotherButton.Location = new System.Drawing.Point(487, 3);
-            this.anotherButton.Name = "anotherButton";
-            this.anotherButton.Size = new System.Drawing.Size(87, 65);
-            this.anotherButton.TabIndex = 2;
-            this.anotherButton.Text = "Jeszcze jeden guzik";
-            this.anotherButton.UseVisualStyleBackColor = true;
-            // 
             // titleLabel
             // 
             this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.titleLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.titleLabel, 3);
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.titleLabel.Location = new System.Drawing.Point(257, 55);
+            this.titleLabel.Location = new System.Drawing.Point(257, 50);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(302, 29);
             this.titleLabel.TabIndex = 11;
             this.titleLabel.Text = "Karta pacjenta: <pacjent>";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 3);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.35729F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.64271F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel2.Controls.Add(this.dataTypeButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dataTypeComboBox, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(103, 116);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(610, 62);
+            this.tableLayoutPanel2.TabIndex = 12;
+            // 
+            // dataTypeButton
+            // 
+            this.dataTypeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataTypeButton.Location = new System.Drawing.Point(512, 9);
+            this.dataTypeButton.Name = "dataTypeButton";
+            this.dataTypeButton.Size = new System.Drawing.Size(73, 43);
+            this.dataTypeButton.TabIndex = 0;
+            this.dataTypeButton.Text = "Filtruj dane";
+            this.dataTypeButton.UseVisualStyleBackColor = true;
+            this.dataTypeButton.Click += new System.EventHandler(this.dataTypeButton_Click);
+            // 
+            // dataTypeComboBox
+            // 
+            this.dataTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataTypeComboBox.FormattingEnabled = true;
+            this.dataTypeComboBox.Location = new System.Drawing.Point(3, 18);
+            this.dataTypeComboBox.Name = "dataTypeComboBox";
+            this.dataTypeComboBox.Size = new System.Drawing.Size(321, 24);
+            this.dataTypeComboBox.TabIndex = 1;
+            this.dataTypeComboBox.Text = "Wybierz typ danych";
+            // 
             // HistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 522);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "HistoryForm";
             this.Text = "HistoryForm";
             this.Load += new System.EventHandler(this.HistoryForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -254,5 +300,8 @@
         private System.Windows.Forms.Button chartButton;
         private System.Windows.Forms.Button anotherButton;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button dataTypeButton;
+        private System.Windows.Forms.ComboBox dataTypeComboBox;
     }
 }
