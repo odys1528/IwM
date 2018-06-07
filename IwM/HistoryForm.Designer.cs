@@ -139,6 +139,7 @@
             this.historyDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.historyDataGridView.Location = new System.Drawing.Point(103, 266);
             this.historyDataGridView.Name = "historyDataGridView";
+            this.historyDataGridView.ReadOnly = true;
             this.historyDataGridView.RowTemplate.Height = 24;
             this.historyDataGridView.Size = new System.Drawing.Size(610, 137);
             this.historyDataGridView.TabIndex = 9;

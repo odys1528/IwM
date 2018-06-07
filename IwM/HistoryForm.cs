@@ -43,7 +43,7 @@ namespace IwM
             dataTypeComboBox.SelectedIndex = 0;
 
             getPatientData();
-            //fillGridWithData();
+            fillGridWithData();
         }
 
         private void dataTypeButton_Click(object sender, EventArgs e)
@@ -99,19 +99,40 @@ namespace IwM
 
         private void fillGridWithData()
         {
-            foreach(var o in observations)
+            foreach (var o in observations)
             {
                 //bs.Add(o);
+                TableRecord tr = new TableRecord("Observation","2018-06-07","nana");
+                bs.Add(tr);
             }
 
             foreach(var m in medications)
             {
                 //bs.Add(m);
+                TableRecord tr = new TableRecord("Medication", "2018-06-07", "nana");
+                bs.Add(tr);
             }
 
             foreach(var ms in medicationStatements)
             {
                 //bs.Add(ms);
+                TableRecord tr = new TableRecord("Medication Statement", "2018-06-07", "nana");
+                bs.Add(tr);
+            }
+            historyDataGridView.DataSource = bs;
+        }
+
+        private class TableRecord
+        {
+            public string type { get; set; }
+            public string date { get; set; }
+            public string desc { get; set; }
+
+            public TableRecord(string type, string date, string desc)
+            {
+                this.type = type;
+                this.date = date;
+                this.desc = desc;
             }
         }
     }
