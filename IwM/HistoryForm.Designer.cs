@@ -108,6 +108,7 @@
             this.chartButton.TabIndex = 1;
             this.chartButton.Text = "Wyświetl wykres";
             this.chartButton.UseVisualStyleBackColor = true;
+            this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
             // 
             // chartTypeComboBox
             // 
