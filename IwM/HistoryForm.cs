@@ -168,7 +168,7 @@ namespace IwM
         private void chartButton_Click(object sender, EventArgs e)
         {
             string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
-            ChartForm form = new ChartForm(patientName, chartTypeComboBox.SelectedItem.ToString(), (BindingSource)historyDataGridView.DataSource);
+            ChartForm form = new ChartForm(patientName, chartTypeComboBox.SelectedItem.ToString(), bs);
             form.ShowDialog();
         }
     }

@@ -87,7 +87,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 3);
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.00995F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.99005F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 209F));
             this.tableLayoutPanel4.Controls.Add(this.chartButton, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.chartTypeComboBox, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -102,7 +102,7 @@
             // 
             this.chartButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chartButton.Enabled = false;
-            this.chartButton.Location = new System.Drawing.Point(440, 3);
+            this.chartButton.Location = new System.Drawing.Point(439, 3);
             this.chartButton.Name = "chartButton";
             this.chartButton.Size = new System.Drawing.Size(131, 65);
             this.chartButton.TabIndex = 1;
