@@ -19,6 +19,7 @@ namespace IwM
         List<Medication> medications;
         List<MedicationStatement> medicationStatements;
         BindingSource bs;
+        HashSet<string> types;
 
         public HistoryForm(Patient patient, Bundle bundle)
         {
@@ -26,6 +27,7 @@ namespace IwM
             this.patient = patient;
             this.data = bundle;
             bs = new BindingSource();
+            types = new HashSet<string>();
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
@@ -46,6 +48,16 @@ namespace IwM
         private void dataTypeButton_Click(object sender, EventArgs e)
         {
             fillGridWithData(dataTypeComboBox.SelectedIndex);
+            if (dataTypeComboBox.SelectedIndex > 0)
+            {
+                chartTypeComboBox.Enabled = true;
+                chartButton.Enabled = true;
+            }
+            else
+            {
+                chartTypeComboBox.Enabled = false;
+                chartButton.Enabled = false;
+            }
         }
 
         private void getPatientData()
@@ -76,33 +88,44 @@ namespace IwM
             //Console.WriteLine(string.Format("{0}", a.Start));
         }
 
+        private void updateChartTypes()
+        {
+            chartTypeComboBox.Items.Clear();
+            foreach (var t in types)
+            {
+                chartTypeComboBox.Items.Add(t);
+            }
+        }
+
         private void fillGridWithData(int mode)
         {
             bs.Clear();
+            types.Clear();
             if (mode == 0 || mode == 1)
                 foreach (var o in observations)
                 {
-                    //bs.Add(o);
-                    TableRecord tr = new TableRecord("Observation","2018-06-07","nana");
+                    TableRecord tr = new TableRecord("Observation",o.Effective.ToString(), o.Code.Text);
                     bs.Add(tr);
+                    types.Add(o.Code.Text);
                 }
 
             if (mode == 0 || mode == 2)
                 foreach (var m in medications)
                 {
-                    //bs.Add(m);
-                    TableRecord tr = new TableRecord("Medication", "2018-06-07", "nana");
+                    TableRecord tr = new TableRecord("Medication", "brak", m.Ingredient.ToString());
                     bs.Add(tr);
+                    types.Add(m.Ingredient.ToString());
                 }
 
             if (mode == 0 || mode == 3)
                 foreach (var ms in medicationStatements)
                 {
-                    //bs.Add(ms);
-                    TableRecord tr = new TableRecord("Medication Statement", "2018-06-07", "nana");
+                    TableRecord tr = new TableRecord("Medication Statement", ms.Effective.ToString(), ms.BasedOn.ToString());
                     bs.Add(tr);
+                    types.Add(ms.BasedOn.ToString());
                 }
             historyDataGridView.DataSource = bs;
+            updateChartTypes();
         }
 
         private class TableRecord
