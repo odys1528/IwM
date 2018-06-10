@@ -34,9 +34,13 @@ namespace IwM
         {
             foreach(var o in observations)
             {
-                DateTime date = DateTime.Parse(o.Effective.ToString());
-                double value = valueFromObservation(o);
-                if(!seriesData.Keys.Contains(date)) seriesData.Add(date, value);
+                if(dataName == o.Code.Text)
+                {
+                    DateTime date = DateTime.Parse(o.Effective.ToString());
+                    double value = valueFromObservation(o);
+                    if(!seriesData.Keys.Contains(date)) seriesData.Add(date, value);
+                }
+                
             }
         }
 
@@ -73,6 +77,11 @@ namespace IwM
 
             chartControl.Series.Clear();
             chartControl.Series.Add(series);
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            fillSeriesWithData(fromDateTimePicker.Value, toDateTimePicker.Value);
         }
     }
 }
