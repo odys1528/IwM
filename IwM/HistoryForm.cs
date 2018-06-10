@@ -1,4 +1,5 @@
 ﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace IwM
 {
@@ -167,9 +169,12 @@ namespace IwM
 
         private void chartButton_Click(object sender, EventArgs e)
         {
-            string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
-            ChartForm form = new ChartForm(patientName, chartTypeComboBox.SelectedItem.ToString(), bs);
-            form.ShowDialog();
+            if (dataTypeComboBox.SelectedIndex == 1)
+            {
+                string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
+                ChartForm form = new ChartForm(patientName, chartTypeComboBox.SelectedItem.ToString(), observations);
+                form.ShowDialog();
+            }
         }
     }
 }
