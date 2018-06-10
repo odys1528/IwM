@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.chartButton = new System.Windows.Forms.Button();
+            this.chartTypeComboBox = new System.Windows.Forms.ComboBox();
             this.historyDataGridView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.fromLabel = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataTypeButton = new System.Windows.Forms.Button();
             this.dataTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.chartTypeComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).BeginInit();
@@ -87,7 +87,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 3);
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.00995F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.99005F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel4.Controls.Add(this.chartButton, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.chartTypeComboBox, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -108,6 +108,17 @@
             this.chartButton.TabIndex = 1;
             this.chartButton.Text = "Wyświetl wykres";
             this.chartButton.UseVisualStyleBackColor = true;
+            // 
+            // chartTypeComboBox
+            // 
+            this.chartTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chartTypeComboBox.Enabled = false;
+            this.chartTypeComboBox.FormattingEnabled = true;
+            this.chartTypeComboBox.Location = new System.Drawing.Point(3, 23);
+            this.chartTypeComboBox.Name = "chartTypeComboBox";
+            this.chartTypeComboBox.Size = new System.Drawing.Size(357, 24);
+            this.chartTypeComboBox.TabIndex = 2;
+            this.chartTypeComboBox.Text = "Wybierz dane do wykresu";
             // 
             // historyDataGridView
             // 
@@ -195,6 +206,7 @@
             this.filterButton.TabIndex = 4;
             this.filterButton.Text = "Filtruj daty";
             this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // titleLabel
             // 
@@ -245,17 +257,6 @@
             this.dataTypeComboBox.Size = new System.Drawing.Size(321, 24);
             this.dataTypeComboBox.TabIndex = 1;
             this.dataTypeComboBox.Text = "Wybierz typ danych";
-            // 
-            // chartTypeComboBox
-            // 
-            this.chartTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chartTypeComboBox.Enabled = false;
-            this.chartTypeComboBox.FormattingEnabled = true;
-            this.chartTypeComboBox.Location = new System.Drawing.Point(3, 23);
-            this.chartTypeComboBox.Name = "chartTypeComboBox";
-            this.chartTypeComboBox.Size = new System.Drawing.Size(357, 24);
-            this.chartTypeComboBox.TabIndex = 2;
-            this.chartTypeComboBox.Text = "Wybierz dane do wykresu";
             // 
             // HistoryForm
             // 

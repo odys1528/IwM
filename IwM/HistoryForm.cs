@@ -141,5 +141,28 @@ namespace IwM
                 this.desc = desc;
             }
         }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            if(dataTypeComboBox.SelectedIndex != 2)
+            {
+                BindingSource filter = new BindingSource();
+                DateTime start = fromDateTimePicker.Value;
+                DateTime end = toDateTimePicker.Value;
+
+                historyDataGridView.DataSource = bs;
+
+                foreach (DataGridViewRow row in historyDataGridView.Rows)
+                {
+                    DateTime x = DateTime.Parse(row.Cells["date"].Value.ToString());
+                    if (x >= start && x <= end)
+                    {
+                        filter.Add(new TableRecord(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString()));
+                    }
+                }
+
+                historyDataGridView.DataSource = filter;
+            }
+        }
     }
 }
