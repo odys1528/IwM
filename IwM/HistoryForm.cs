@@ -34,7 +34,7 @@ namespace IwM
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
-            string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
+            string patientName = /*patient.Id + " " + */patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
             titleLabel.Text = "Karta pacjenta: " + patientName;
 
             dataTypeComboBox.Items.Add("wszystkie");

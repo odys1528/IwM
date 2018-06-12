@@ -35,7 +35,7 @@ namespace IwM
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            patients = db.get20Patients(0,-1);
+            /*patients = db.getXPatients(0,-1);
             lastPatientID = patients[19].Id;
             firstPatientID = patients[0].Id;
             minimalPatientID = patients[0].Id;
@@ -44,7 +44,7 @@ namespace IwM
             {
                 patientListBox.Items.Add(l.Id.PadLeft(4,' ') + " " + l.Name.First().Given.FirstOrDefault() + " " + l.Name.First().Family);
             }
-            patientListBox.SelectedIndex = 0;
+            //patientListBox.SelectedIndex = 0;*/
         }
         private void getPatientById(string id) //TODO zaimplementować to w HistoryForm
         {
@@ -88,7 +88,7 @@ namespace IwM
                     patientListBox.Items.Add(l.Id.PadLeft(4, ' ') + " " + l.Name[0].Given.FirstOrDefault() + " " + l.Name.First().Family);
                 }
                 //Console.WriteLine(patients.Count);
-                patientListBox.SelectedIndex = 0;
+                //patientListBox.SelectedIndex = 0;
             }
         }
 
@@ -117,7 +117,7 @@ namespace IwM
         {
             patientListBox.Items.Clear();
             List<Patient> messyPatients = new List<Patient>();
-            messyPatients = db.get20Patients(-1, Int32.Parse(firstPatientID));
+            messyPatients = db.getXPatients(-1, Int32.Parse(firstPatientID));
             patients.Clear();
             for (int i = messyPatients.Count-1; i >= 0; i--) {
                 patients.Add(messyPatients[i]);
@@ -138,7 +138,7 @@ namespace IwM
         private void nextPageButton_Click(object sender, EventArgs e)
         {
             patientListBox.Items.Clear();
-            patients = db.get20Patients(Int32.Parse(lastPatientID),-1);
+            patients = db.getXPatients(Int32.Parse(lastPatientID),-1);
             lastPatientID = patients[19].Id;
             firstPatientID = patients[0].Id;
 

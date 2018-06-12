@@ -11,7 +11,7 @@ namespace IwM
 {
     class FhirOperations
     {
-        public static string FhirClientEndPoint = "https://fhirtest.uhn.ca/baseDstu3/";
+        public static string FhirClientEndPoint = "http://localhost:8080/baseDstu3/";//"https://fhirtest.uhn.ca/baseDstu3/";
         private FhirClient _client;
 
         public FhirOperations()
@@ -34,7 +34,7 @@ namespace IwM
 
             return patients;
         }
-        public List<Patient> get20Patients(int bottom_limit, int top_limit) {
+        public List<Patient> getXPatients(int bottom_limit, int top_limit, int x=3) {
             List<Patient> patients = new List<Patient>();
             Patient patient = new Patient();
             patient.Id = (bottom_limit+1).ToString();
@@ -42,7 +42,7 @@ namespace IwM
             {
                 int id = top_limit - 1;
                 Console.WriteLine(id);
-                for (int i = top_limit -1; i > top_limit - 21; i--)
+                for (int i = top_limit -1; i > top_limit - x - 1; i--)
                 {
                     patient = patientById(id,-1);
                     patients.Add(patient);
@@ -51,7 +51,7 @@ namespace IwM
             }
             else if (top_limit == -1) {
                 int id = bottom_limit + 1;
-                for (int i = bottom_limit + 1; i < bottom_limit + 21; i++)
+                for (int i = bottom_limit + 1; i < bottom_limit + x + 1; i++)
                 {
                     patient = patientById(id,1);
                     patients.Add(patient);
