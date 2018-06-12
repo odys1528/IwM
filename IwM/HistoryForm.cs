@@ -171,7 +171,7 @@ namespace IwM
         {
             if (dataTypeComboBox.SelectedIndex == 1)
             {
-                string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
+                string patientName = /*p8atient.Id + " " + */patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
                 ChartForm form = new ChartForm(patientName, chartTypeComboBox.SelectedItem.ToString(), observations);
                 form.ShowDialog();
             }

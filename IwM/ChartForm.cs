@@ -38,7 +38,7 @@ namespace IwM
                 {
                     DateTime date = DateTime.Parse(o.Effective.ToString());
                     double value = valueFromObservation(o);
-                    if(!seriesData.Keys.Contains(date)) seriesData.Add(date, value);
+                    if(!seriesData.Keys.Contains(date) && value >= 0) seriesData.Add(date, value);
                 }
                 
             }
@@ -48,11 +48,18 @@ namespace IwM
         {
             var a = FhirSerializer.SerializeResourceToXml(o);
             string b = XDocument.Parse(a).ToString();
-            b = b.Substring(b.IndexOf("<value value=") + 14, 10);
-            b = b.Substring(0, b.IndexOf('"'));
-            b = b.Replace(".", ",");
-            if (b.IndexOf(",") < 0) b = b + ",0";
-            return double.Parse(b);
+            try
+            {
+                b = b.Substring(b.IndexOf("<value value=") + 14, 10);
+                b = b.Substring(0, b.IndexOf('"'));
+                b = b.Replace(".", ",");
+                if (b.IndexOf(",") < 0) b = b + ",0";
+            }
+            catch(Exception) { }
+
+            double value;
+            if (double.TryParse(b, out value)) return value;
+            else return -1.0;
         }
 
         private void ChartForm_Load(object sender, EventArgs e)

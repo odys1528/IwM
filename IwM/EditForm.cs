@@ -19,7 +19,7 @@ namespace IwM
         private BindingSource bindingSource1 = new BindingSource();
         private FhirOperations db;
         // redundant
-        public static string FhirClientEndPoint = "https://fhirtest.uhn.ca/baseDstu3/";
+        public static string FhirClientEndPoint = "http://localhost:8080/baseDstu3/";
         private FhirClient _client;
 
         public EditForm(Patient patient, List<Observation> bundle)
@@ -62,7 +62,7 @@ namespace IwM
         }
         private void EditForm_Load(object sender, EventArgs e)
         {
-            string patientName = patient.Id + " " + patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
+            string patientName = /*patient.Id + " " + */patient.Name[0].Given.FirstOrDefault() + " " + patient.Name.First().Family;
             titleLabel.Text = "Edycja danych pacjenta: " + patientName;
             DataTable _myDataTable = new DataTable();
 
