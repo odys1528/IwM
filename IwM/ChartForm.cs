@@ -48,11 +48,16 @@ namespace IwM
         {
             var a = FhirSerializer.SerializeResourceToXml(o);
             string b = XDocument.Parse(a).ToString();
+            Console.WriteLine(b);
+            Console.WriteLine("--------------------------------------------");
             try
             {
-                b = b.Substring(b.IndexOf("<value value=") + 14, 10);
+                b = b.Substring(b.IndexOf("<value value=") + 14, 20);
+                Console.WriteLine(b);
                 b = b.Substring(0, b.IndexOf('"'));
+                Console.WriteLine(b);
                 b = b.Replace(".", ",");
+                Console.WriteLine(b);
                 if (b.IndexOf(",") < 0) b = b + ",0";
             }
             catch(Exception) { }
